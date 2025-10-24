@@ -692,14 +692,17 @@
                     <button class="nav-button" onclick="showCategory('specials')">
                         SPECIALS
                     </button>
+                    <button class="nav-button" onclick="showCategory('sides')">
+                        SIDES
+                    </button>
+                    <button class="nav-button" onclick="showCategory('sides-sauces')">
+                        SAUCES &amp; EXTRAS
+                    </button>
                     <button class="nav-button" onclick="showCategory('desserts')">
                         DESSERTS
                     </button>
                     <button class="nav-button" onclick="showCategory('beverages')">
                         BEVERAGES
-                    </button>
-                    <button class="nav-button" onclick="showCategory('sides-sauces')">
-                        SAUCES &amp; EXTRAS
                     </button>
                 </nav>
             </div>
@@ -1294,15 +1297,6 @@
                 <div class="menu-item">
                     <div class="item-info">
                         <div class="item-left">
-
-                        </div>
-                        <div class="item-price">$2.99</div>
-                    </div>
-                </div>
-
-                <div class="menu-item">
-                    <div class="item-info">
-                        <div class="item-left">
                             <h3 class="item-name">Sweet Tea</h3>
                             <p class="item-description">Freshly brewed sweet tea</p>
                         </div>
@@ -1351,31 +1345,64 @@
                 </div>
             </div>
 
+            <!-- Sides Section -->
+            <div id="sides" class="category-section">
+                <button class="home-button" onclick="goHome()">🏠 Home</button>
+                <h2 class="category-title">SIDES</h2>
+                <p class="category-subtitle">Sides included with combo meals. Plantains are an additional $2.50</p>
+                
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-left">
+                            <h3 class="item-name">French Fries</h3>
+                            <p class="item-description">Included with combo meals</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-left">
+                            <h3 class="item-name">Simple Salad</h3>
+                            <p class="item-description">Included with combo meals</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-left">
+                            <h3 class="item-name">Paella Rice</h3>
+                            <p class="item-description">Included with combo meals</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-left">
+                            <h3 class="item-name">Beans</h3>
+                            <p class="item-description">Included with combo meals</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-left">
+                            <h3 class="item-name">Plantains</h3>
+                            <p class="item-description">Additional upcharge</p>
+                        </div>
+                        <div class="item-price">$2.50</div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Sides & Sauces Section -->
             <div id="sides-sauces" class="category-section">
                 <button class="home-button" onclick="goHome()">🏠 Home</button>
                 <h2 class="category-title">SAUCES &amp; EXTRAS</h2>
                 
-                <div class="menu-item">
-                    <div class="item-info">
-                        <div class="item-left">
-                            <h3 class="item-name">Add Side Salad</h3>
-                            <p class="item-description">Fresh side salad</p>
-                        </div>
-                        <div class="item-price">$3.00</div>
-                    </div>
-                </div>
-
-                <div class="menu-item">
-                    <div class="item-info">
-                        <div class="item-left">
-                            <h3 class="item-name">Add Plantains</h3>
-                            <p class="item-description">Sweet plantains as a side</p>
-                        </div>
-                        <div class="item-price">$2.50</div>
-                    </div>
-                </div>
-
                 <div class="menu-item">
                     <div class="item-info">
                         <div class="item-left">
@@ -1386,27 +1413,56 @@
                     </div>
                 </div>
 
+
+
+                <p class="category-subtitle">Extra sauce: $0.50 each</p>
+
                 <div class="menu-item">
                     <div class="item-info">
                         <div class="item-left">
-                            <h3 class="item-name">Extra Sauce Price</h3>
-                            <p class="item-description">Additional sauces beyond what's included with your meal</p>
+                            <h3 class="item-name">Chimichurri (Regular/Spicy)</h3>
+                            <p class="item-description">Traditional Argentine herb sauce</p>
                         </div>
-                        <div class="item-price">$0.50 each</div>
                     </div>
                 </div>
 
-                <div class="simple-list">
-                    <h3>Available Sauces</h3>
-                    <ul>
-                        <li>Chimichurri (Regular) - Traditional Argentine herb sauce</li>
-                        <li>Chimichurri (Spicy) - Spicy version of our traditional sauce</li>
-                        <li>Chimi-Q - Special house blend <span class="tag tag-new">NEW!</span></li>
-                        <li>Cilantro (Regular) - Fresh cilantro sauce</li>
-                        <li>Cilantro (Spicy) - Spicy cilantro sauce</li>
-                        <li>Yum Yum - Creamy yum yum sauce</li>
-                        <li>Salsa Golf - Argentine mix of ketchup and mayo</li>
-                    </ul>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-left">
+                            <h3 class="item-name">Chimi-Q</h3>
+                            <p class="item-description">Special house blend</p>
+                            <div class="item-tags">
+                                <span class="tag tag-new">NEW</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-left">
+                            <h3 class="item-name">Cilantro (Regular/Spicy)</h3>
+                            <p class="item-description">Fresh cilantro sauce</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-left">
+                            <h3 class="item-name">Yum Yum</h3>
+                            <p class="item-description">Creamy yum yum sauce</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="item-info">
+                        <div class="item-left">
+                            <h3 class="item-name">Red Hot</h3>
+                            <p class="item-description">Mexican-style very spicy sauce</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
@@ -1431,7 +1487,7 @@
             document.getElementById('home').classList.add('hidden');
             
             // Hide all category sections
-            const categories = ['starters', 'paellas', 'main-dishes', 'specials', 'desserts', 'beverages', 'sides-sauces'];
+            const categories = ['starters', 'paellas', 'main-dishes', 'specials', 'desserts', 'beverages', 'sides-sauces', 'sides'];
             categories.forEach(cat => {
                 document.getElementById(cat).classList.remove('active');
             });
@@ -1446,7 +1502,7 @@
         
         function goHome() {
             // Hide all category sections
-            const categories = ['starters', 'paellas', 'main-dishes', 'specials', 'desserts', 'beverages', 'sides-sauces'];
+            const categories = ['starters', 'paellas', 'main-dishes', 'specials', 'desserts', 'beverages', 'sides-sauces', 'sides'];
             categories.forEach(cat => {
                 document.getElementById(cat).classList.remove('active');
             });

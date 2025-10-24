@@ -163,6 +163,16 @@
             text-align: center;
             margin-bottom: var(--space-32);
             padding: var(--space-24) 0;
+            background: linear-gradient(45deg, var(--argentina-blue) 0%, var(--argentina-white) 33%, var(--argentina-blue) 66%, var(--argentina-white) 100%);
+            background-size: 200% 200%;
+            animation: flagWave 3s ease-in-out infinite;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+        }
+
+        @keyframes flagWave {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
 
         .logo-container {
@@ -174,14 +184,12 @@
             font-size: var(--font-size-4xl);
             font-weight: var(--font-weight-bold);
             color: var(--argentina-red);
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
             letter-spacing: var(--letter-spacing-tight);
             margin-bottom: var(--space-4);
-            background: linear-gradient(135deg, var(--argentina-red), var(--argentina-blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
             font-family: var(--font-family-base);
+            background: none;
+            -webkit-text-fill-color: var(--argentina-red);
         }
 
         .logo-subtitle {
@@ -205,9 +213,9 @@
         }
 
         .nav-button {
-            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
-            color: var(--color-white);
-            border: none;
+            background: linear-gradient(135deg, var(--argentina-blue) 0%, var(--argentina-white) 50%, var(--argentina-blue) 100%);
+            color: var(--color-text);
+            border: 3px solid var(--argentina-blue);
             padding: var(--space-20) var(--space-16);
             border-radius: var(--radius-lg);
             font-size: var(--font-size-xl);
@@ -216,15 +224,18 @@
             transition: all var(--duration-normal) var(--ease-standard);
             box-shadow: var(--shadow-md);
             text-align: center;
-            min-height: 60px;
+            min-height: 70px;
             display: flex;
             align-items: center;
             justify-content: center;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
         }
 
         .nav-button:hover {
             transform: translateY(-2px);
             box-shadow: var(--shadow-lg);
+            background: linear-gradient(135deg, var(--argentina-blue) 20%, var(--argentina-white) 50%, var(--argentina-blue) 80%);
+            border-color: var(--argentina-red);
         }
 
         .nav-button:active {
@@ -234,7 +245,7 @@
         .home-button {
             background: var(--argentina-red);
             color: var(--color-white);
-            border: none;
+            border: 2px solid var(--argentina-white);
             padding: var(--space-12) var(--space-24);
             border-radius: var(--radius-base);
             font-size: var(--font-size-lg);
@@ -242,6 +253,7 @@
             cursor: pointer;
             margin-bottom: var(--space-24);
             transition: all var(--duration-fast) var(--ease-standard);
+            box-shadow: var(--shadow-sm);
         }
 
         .home-button:hover {
@@ -268,9 +280,14 @@
         .category-title {
             font-size: var(--font-size-3xl);
             font-weight: var(--font-weight-bold);
-            color: var(--color-primary);
+            color: var(--argentina-red);
             margin-bottom: var(--space-8);
             text-align: center;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            background: linear-gradient(45deg, var(--argentina-blue), var(--argentina-white), var(--argentina-blue));
+            padding: var(--space-16);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--space-24);
         }
 
         .category-subtitle {
@@ -283,12 +300,24 @@
 
         .menu-item {
             background: var(--color-surface);
-            border: 1px solid var(--color-card-border);
+            border: 3px solid var(--argentina-blue);
             border-radius: var(--radius-lg);
             padding: var(--space-20);
             margin-bottom: var(--space-16);
             box-shadow: var(--shadow-sm);
-            transition: box-shadow var(--duration-normal) var(--ease-standard);
+            transition: all var(--duration-normal) var(--ease-standard);
+            position: relative;
+        }
+
+        .menu-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--argentina-blue), var(--argentina-white), var(--argentina-blue));
+            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
         }
 
         .menu-item:hover {
@@ -330,15 +359,21 @@
         }
 
         .item-number {
-            background: var(--color-primary);
+            background: var(--argentina-blue);
             color: var(--color-white);
-            padding: var(--space-4) var(--space-8);
+            padding: var(--space-12) var(--space-16);
             border-radius: var(--radius-full);
-            font-size: var(--font-size-sm);
+            font-size: 26px;
             font-weight: var(--font-weight-bold);
-            min-width: 24px;
+            min-width: 50px;
+            height: 50px;
             text-align: center;
             margin-left: var(--space-8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-md);
+            border: 3px solid var(--argentina-white);
         }
 
         .item-description {
@@ -417,19 +452,21 @@
         }
 
         .footer {
-            background: var(--color-surface);
-            border: 1px solid var(--color-card-border);
+            background: linear-gradient(135deg, var(--argentina-blue) 0%, var(--argentina-white) 50%, var(--argentina-blue) 100%);
+            border: 3px solid var(--argentina-blue);
             border-radius: var(--radius-lg);
             padding: var(--space-24);
             margin-top: var(--space-32);
             text-align: center;
+            box-shadow: var(--shadow-md);
         }
 
         .footer h3 {
             font-size: var(--font-size-xl);
             font-weight: var(--font-weight-bold);
-            color: var(--color-primary);
+            color: var(--argentina-red);
             margin-bottom: var(--space-16);
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
         }
 
         .contact-info {

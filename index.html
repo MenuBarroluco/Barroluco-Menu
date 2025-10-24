@@ -51,7 +51,7 @@
             --color-bg-8: rgba(6, 182, 212, 0.08); /* Light cyan */
 
             /* Argentine colors */
-            --argentina-blue: rgba(116, 172, 223, 1);
+            --argentina-blue: rgba(143, 197, 236, 1);
             --argentina-red: rgba(196, 16, 46, 1);
             --argentina-white: rgba(255, 255, 255, 1);
             --order-btn-red: rgba(196, 16, 46, 1);
@@ -191,16 +191,10 @@
         .header {
             text-align: center;
             margin-bottom: var(--space-24);
-            padding: var(--space-24) 0;
-            background: linear-gradient(to bottom, 
-                var(--argentina-blue) 0%, 
-                var(--argentina-blue) 33%, 
-                var(--argentina-white) 33%, 
-                var(--argentina-white) 67%, 
-                var(--argentina-blue) 67%, 
-                var(--argentina-blue) 100%);
+            padding: 0;
+            background: var(--color-white);
             border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-lg);
+            box-shadow: var(--shadow-sm);
             position: relative;
             overflow: hidden;
         }
@@ -208,14 +202,14 @@
         /* Argentina flag stripes only - NO SUN */
 
         .logo-container {
-            margin-bottom: var(--space-16);
+            margin-bottom: 0;
             text-align: center;
             position: relative;
             z-index: 2;
-            background: #74ACDF;
-            padding: var(--space-20) var(--space-16);
+            background: #8FC5EC;
+            padding: 70px var(--space-24);
             border-radius: var(--radius-lg);
-            margin: 0 var(--space-16) var(--space-16) var(--space-16);
+            margin: 0;
             box-shadow: var(--shadow-md);
             position: relative;
             overflow: hidden;
@@ -258,22 +252,22 @@
 
         @keyframes headerFlash {
             0%, 100% {
-                background: #74ACDF;
-                box-shadow: var(--shadow-md), 0 0 0 rgba(116, 172, 223, 0.4);
+                background: #8FC5EC;
+                box-shadow: var(--shadow-md), 0 0 0 rgba(143, 197, 236, 0.4);
             }
             50% {
-                background: #8BB6E8;
-                box-shadow: var(--shadow-md), 0 0 20px rgba(116, 172, 223, 0.6);
+                background: #A8D5F0;
+                box-shadow: var(--shadow-md), 0 0 20px rgba(143, 197, 236, 0.6);
             }
         }
 
         .logo-text {
-            font-size: var(--font-size-4xl);
+            font-size: 64px;
             font-weight: var(--font-weight-bold);
             color: var(--argentina-red);
             text-shadow: 2px 2px 4px rgba(255,255,255,0.8), 1px 1px 2px rgba(0,0,0,0.3);
             letter-spacing: var(--letter-spacing-tight);
-            margin-bottom: var(--space-4);
+            margin-bottom: var(--space-8);
             font-family: var(--font-family-base);
             background: none;
             -webkit-text-fill-color: var(--argentina-red);
@@ -282,7 +276,7 @@
         }
 
         .logo-subtitle {
-            font-size: var(--font-size-lg);
+            font-size: var(--font-size-xl);
             color: var(--color-slate-900);
             font-weight: var(--font-weight-medium);
             font-style: italic;
@@ -297,6 +291,7 @@
             font-weight: var(--font-weight-medium);
             position: relative;
             z-index: 2;
+            padding: var(--space-16) 0;
         }
 
         /* ORDER ONLINE BUTTON - PROMINENT CTA */
@@ -636,8 +631,12 @@
                 padding: var(--space-12);
             }
             
+            .logo-container {
+                padding: 50px var(--space-16);
+            }
+            
             .logo-text {
-                font-size: var(--font-size-3xl);
+                font-size: 48px;
             }
             
             .logo-subtitle {
@@ -682,13 +681,13 @@
             <div id="home" class="home-section">
                 <nav class="navigation">
                     <button class="nav-button" onclick="showCategory('starters')">
-                        STARTERS &amp; SIDES
+                        READY TO GO
                     </button>
                     <button class="nav-button" onclick="showCategory('paellas')">
-                        PAELLAS
+                        QUICK &amp; EASY
                     </button>
                     <button class="nav-button" onclick="showCategory('main-dishes')">
-                        MAIN DISHES
+                        ENTREES
                     </button>
                     <button class="nav-button" onclick="showCategory('specials')">
                         SPECIALS
@@ -708,7 +707,7 @@
             <!-- Starters & Sides Section -->
             <div id="starters" class="category-section">
                 <button class="home-button" onclick="goHome()">🏠 Home</button>
-                <h2 class="category-title">STARTERS &amp; SIDES</h2>
+                <h2 class="category-title">READY TO GO</h2>
                 
                 <div class="menu-item">
                     <div class="item-info">
@@ -792,8 +791,8 @@
             <!-- Paellas Section -->
             <div id="paellas" class="category-section">
                 <button class="home-button" onclick="goHome()">🏠 Home</button>
-                <h2 class="category-title">PAELLAS</h2>
-                <p class="category-subtitle">Quick and Easy</p>
+                <h2 class="category-title">QUICK &amp; EASY</h2>
+
                 
                 <div class="menu-item">
                     <div class="item-info">
@@ -893,7 +892,7 @@
             <!-- Main Dishes Section -->
             <div id="main-dishes" class="category-section">
                 <button class="home-button" onclick="goHome()">🏠 Home</button>
-                <h2 class="category-title">MAIN DISHES</h2>
+                <h2 class="category-title">ENTREES</h2>
                 <p class="category-subtitle">Barroluco Entrees</p>
                 
                 <div class="menu-item">
@@ -1417,7 +1416,7 @@
             <div class="contact-info">
                 <div class="contact-item">📍 47 N. Pearl St., Columbus, OH 43215</div>
                 <div class="contact-item">📞 <a href="tel:614-450-0777" style="color: var(--color-text-secondary); text-decoration: none;">614-450-0777</a></div>
-                <div class="contact-item">🛒 <a href="https://order.toasttab.com/online/barroluco-argentine-comfort-food-pearl-st-47-n-pearl-st" target="_blank" style="color: var(--argentina-red); font-weight: var(--font-weight-bold); text-decoration: underline;">Ordenar en línea: www.barroluco.com</a></div>
+                <div class="contact-item">🛒 <a href="https://order.toasttab.com/online/barroluco-argentine-comfort-food-pearl-st-47-n-pearl-st" target="_blank" style="color: var(--argentina-red); font-weight: var(--font-weight-bold); text-decoration: underline;">Order Online: www.barroluco.com</a></div>
             </div>
             <p class="warning">*Consuming raw or undercooked meats, poultry, seafood, shellfish, or eggs may increase your risk of food-borne illness, especially if you have certain medical conditions.</p>
         </footer>

@@ -52,8 +52,11 @@
 
             /* Argentine colors */
             --argentina-blue: rgba(116, 172, 223, 1);
-            --argentina-red: rgba(200, 50, 50, 1);
+            --argentina-red: rgba(196, 16, 46, 1);
             --argentina-white: rgba(255, 255, 255, 1);
+            --order-btn-red: rgba(196, 16, 46, 1);
+            --order-btn-red-hover: rgba(176, 14, 41, 1);
+            --order-btn-red-active: rgba(156, 12, 36, 1);
 
             /* Semantic Color Tokens (Light Mode) */
             --color-background: var(--color-cream-50);
@@ -157,52 +160,193 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .language-switcher {
+            position: fixed;
+            top: var(--space-16);
+            right: var(--space-16);
+            z-index: 1000;
+            background: var(--argentina-white);
+            color: var(--argentina-blue);
+            padding: var(--space-8) var(--space-12);
+            border-radius: var(--radius-base);
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-medium);
+            text-decoration: none;
+            border: 2px solid var(--argentina-blue);
+            transition: all var(--duration-fast) var(--ease-standard);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .language-switcher:hover {
+            background: var(--argentina-blue);
+            color: var(--argentina-white);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
         }
 
         .header {
             text-align: center;
-            margin-bottom: var(--space-32);
+            margin-bottom: var(--space-24);
             padding: var(--space-24) 0;
-            background: linear-gradient(45deg, var(--argentina-blue) 0%, var(--argentina-white) 33%, var(--argentina-blue) 66%, var(--argentina-white) 100%);
-            background-size: 200% 200%;
-            animation: flagWave 3s ease-in-out infinite;
+            background: linear-gradient(to bottom, 
+                var(--argentina-blue) 0%, 
+                var(--argentina-blue) 33%, 
+                var(--argentina-white) 33%, 
+                var(--argentina-white) 67%, 
+                var(--argentina-blue) 67%, 
+                var(--argentina-blue) 100%);
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
         }
 
-        @keyframes flagWave {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
+        /* Argentina flag stripes only - NO SUN */
 
         .logo-container {
             margin-bottom: var(--space-16);
             text-align: center;
+            position: relative;
+            z-index: 2;
+            background: #74ACDF;
+            padding: var(--space-20) var(--space-16);
+            border-radius: var(--radius-lg);
+            margin: 0 var(--space-16) var(--space-16) var(--space-16);
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Flash/shine animation effect */
+        .logo-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(255, 255, 255, 0.3) 40%, 
+                rgba(255, 255, 255, 0.6) 50%, 
+                rgba(255, 255, 255, 0.3) 60%, 
+                transparent 100%);
+            animation: shine 4s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        @keyframes shine {
+            0% {
+                left: -100%;
+            }
+            50% {
+                left: 100%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+
+        /* Additional flash/pulse effect */
+        .logo-container {
+            animation: headerFlash 3s ease-in-out infinite;
+        }
+
+        @keyframes headerFlash {
+            0%, 100% {
+                background: #74ACDF;
+                box-shadow: var(--shadow-md), 0 0 0 rgba(116, 172, 223, 0.4);
+            }
+            50% {
+                background: #8BB6E8;
+                box-shadow: var(--shadow-md), 0 0 20px rgba(116, 172, 223, 0.6);
+            }
         }
 
         .logo-text {
             font-size: var(--font-size-4xl);
             font-weight: var(--font-weight-bold);
             color: var(--argentina-red);
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            text-shadow: 2px 2px 4px rgba(255,255,255,0.8), 1px 1px 2px rgba(0,0,0,0.3);
             letter-spacing: var(--letter-spacing-tight);
             margin-bottom: var(--space-4);
             font-family: var(--font-family-base);
             background: none;
             -webkit-text-fill-color: var(--argentina-red);
+            position: relative;
+            z-index: 3;
         }
 
         .logo-subtitle {
             font-size: var(--font-size-lg);
-            color: var(--color-text-secondary);
+            color: var(--color-slate-900);
             font-weight: var(--font-weight-medium);
             font-style: italic;
+            position: relative;
+            z-index: 3;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
         }
 
         .subtitle {
             font-size: var(--font-size-lg);
             color: var(--color-text-secondary);
             font-weight: var(--font-weight-medium);
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ORDER ONLINE BUTTON - PROMINENT CTA */
+        .order-online-container {
+            margin-bottom: var(--space-32);
+            text-align: center;
+        }
+
+        .order-online-btn {
+            display: inline-block;
+            background: var(--argentina-white);
+            color: var(--argentina-red);
+            text-decoration: none;
+            font-size: var(--font-size-2xl);
+            font-weight: var(--font-weight-bold);
+            padding: var(--space-20) var(--space-32);
+            border-radius: var(--radius-lg);
+            min-height: 60px;
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-12);
+            transition: all var(--duration-normal) var(--ease-standard);
+            box-shadow: var(--shadow-lg), 0 0 20px rgba(196, 16, 46, 0.3);
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+            border: 3px solid var(--argentina-red);
+            animation: orderButtonPulse 2s ease-in-out infinite;
+        }
+
+        .order-online-btn:hover {
+            background: rgba(245, 245, 245, 1);
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: var(--shadow-lg), 0 0 30px rgba(196, 16, 46, 0.5);
+            color: var(--argentina-red);
+        }
+
+        .order-online-btn:active {
+            background: rgba(235, 235, 235, 1);
+            transform: translateY(0) scale(1);
+        }
+
+        @keyframes orderButtonPulse {
+            0%, 100% { 
+                box-shadow: var(--shadow-lg), 0 0 20px rgba(196, 16, 46, 0.3);
+            }
+            50% { 
+                box-shadow: var(--shadow-lg), 0 0 35px rgba(196, 16, 46, 0.5);
+            }
         }
 
         .navigation {
@@ -504,18 +648,34 @@
                 font-size: var(--font-size-lg);
                 padding: var(--space-16);
             }
+
+            .order-online-btn {
+                font-size: var(--font-size-xl);
+                padding: var(--space-16) var(--space-24);
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Language Switcher -->
+    <a href="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/598aa9deb7950eb2c40ef203ad576c33/39850057-1dde-4275-a2cd-e4a77cc59737/index.html" class="language-switcher">Español</a>
+    
     <div class="container">
         <header class="header">
             <div class="logo-container">
                 <div class="logo-text">BARROLUCO</div>
-                <div class="logo-subtitle">Argentine Cuisine</div>
+                <div class="logo-subtitle">Argentine Comfort Food</div>
             </div>
             <p class="subtitle">Digital Menu</p>
         </header>
+
+        <!-- ORDER ONLINE BUTTON - PROMINENT RED CTA -->
+        <div class="order-online-container">
+            <a href="https://order.toasttab.com/online/barroluco-argentine-comfort-food-pearl-st-47-n-pearl-st" target="_blank" class="order-online-btn">
+                🛒 ORDER ONLINE
+            </a>
+        </div>
 
         <main>
             <!-- Home Section -->
@@ -549,7 +709,6 @@
             <div id="starters" class="category-section">
                 <button class="home-button" onclick="goHome()">🏠 Home</button>
                 <h2 class="category-title">STARTERS &amp; SIDES</h2>
-                <p class="category-subtitle">Ready to Go</p>
                 
                 <div class="menu-item">
                     <div class="item-info">
@@ -558,7 +717,7 @@
                                 <h3 class="item-name">Paella Rice</h3>
                                 <span class="item-number">1</span>
                             </div>
-                            <p class="item-description">Paella style rice, no proteins, and sauce.</p>
+                            <p class="item-description">Paella style rice, no proteins, and sauce</p>
                         </div>
                         <div class="item-price">$5.80</div>
                     </div>
@@ -571,7 +730,7 @@
                                 <h3 class="item-name">French Fries</h3>
                                 <span class="item-number">2</span>
                             </div>
-                            <p class="item-description">Served with your choice of sauce.</p>
+                            <p class="item-description">Served with your choice of sauce</p>
                         </div>
                         <div class="item-price">$5.80</div>
                     </div>
@@ -584,7 +743,7 @@
                                 <h3 class="item-name">Plantains</h3>
                                 <span class="item-number">3</span>
                             </div>
-                            <p class="item-description">Served with your choice of sauce.</p>
+                            <p class="item-description">Served with your choice of sauce</p>
                         </div>
                         <div class="item-price">$6.80</div>
                     </div>
@@ -597,10 +756,7 @@
                                 <h3 class="item-name">1 Empanada</h3>
                                 <span class="item-number">4</span>
                             </div>
-                            <p class="item-description">Chicken, beef, veggie(V) or cheese, and sauce</p>
-                            <div class="item-tags">
-                                <span class="tag tag-vegetarian">V</span>
-                            </div>
+                            <p class="item-description">Chicken, beef, veggie or cheese, and sauce</p>
                         </div>
                         <div class="item-price">$5.80</div>
                     </div>
@@ -613,10 +769,7 @@
                                 <h3 class="item-name">1 Rib</h3>
                                 <span class="item-number">5</span>
                             </div>
-                            <p class="item-description">(GFF) Served with chimichurri sauce.</p>
-                            <div class="item-tags">
-                                <span class="tag tag-gluten-free">GFF</span>
-                            </div>
+                            <p class="item-description">Served with chimichurri sauce (GFF)</p>
                         </div>
                         <div class="item-price">$5.90</div>
                     </div>
@@ -629,10 +782,7 @@
                                 <h3 class="item-name">Simple Salad</h3>
                                 <span class="item-number">6</span>
                             </div>
-                            <p class="item-description">(GFF) Lettuce, onion, tomato, mozzarella cheese, Italian dressing, and your choice of sauce.</p>
-                            <div class="item-tags">
-                                <span class="tag tag-gluten-free">GFF</span>
-                            </div>
+                            <p class="item-description">Lettuce, onion, tomato, mozzarella cheese, Italian dressing (GFF)</p>
                         </div>
                         <div class="item-price">$7.90</div>
                     </div>
@@ -643,7 +793,7 @@
             <div id="paellas" class="category-section">
                 <button class="home-button" onclick="goHome()">🏠 Home</button>
                 <h2 class="category-title">PAELLAS</h2>
-                <p class="category-subtitle">Quick &amp; Easy</p>
+                <p class="category-subtitle">Quick and Easy</p>
                 
                 <div class="menu-item">
                     <div class="item-info">
@@ -652,7 +802,7 @@
                                 <h3 class="item-name">Full Paella</h3>
                                 <span class="item-number">7</span>
                             </div>
-                            <p class="item-description">Rice cooked in the Spaniard tradition. Everything or choose chicken, chorizo, veggies, fajita, beans, and sauce.</p>
+                            <p class="item-description">Rice cooked in Spanish tradition. Everything or choose chicken, chorizo, veggies, fajita, beans, and sauce</p>
                         </div>
                         <div class="item-price">$14.90</div>
                     </div>
@@ -665,7 +815,7 @@
                                 <h3 class="item-name">Simple Paella</h3>
                                 <span class="item-number">8</span>
                             </div>
-                            <p class="item-description">Rice cooked in the Spaniard tradition. Everything or choose chicken, chorizo, veggies, and sauce.</p>
+                            <p class="item-description">Rice cooked in Spanish tradition. Everything or choose chicken, chorizo, veggies, and sauce</p>
                         </div>
                         <div class="item-price">$13.90</div>
                     </div>
@@ -678,10 +828,7 @@
                                 <h3 class="item-name">Vegetarian Paella</h3>
                                 <span class="item-number">9</span>
                             </div>
-                            <p class="item-description">Rice cooked in the Spaniard tradition. Everything or choose fajita, beans, veggies, plantains, and sauce.</p>
-                            <div class="item-tags">
-                                <span class="tag tag-vegetarian">V</span>
-                            </div>
+                            <p class="item-description">Rice cooked in Spanish tradition. Everything or choose fajita, beans, veggies, plantains, and sauce (V)</p>
                         </div>
                         <div class="item-price">$13.90</div>
                     </div>
@@ -694,7 +841,7 @@
                                 <h3 class="item-name">Pork Ribs (3 pieces)</h3>
                                 <span class="item-number">10</span>
                             </div>
-                            <p class="item-description">3 Baby-back ribs grilled with our signature chimichurri sauce and served with paella rice.</p>
+                            <p class="item-description">3 Baby-back ribs grilled with our signature chimichurri sauce and served with paella rice</p>
                         </div>
                         <div class="item-price">$14.90</div>
                     </div>
@@ -704,13 +851,12 @@
                     <div class="item-info">
                         <div class="item-left">
                             <div class="item-header">
-                                <h3 class="item-name">2 Empanadas + Side Platter</h3>
+                                <h3 class="item-name">2 Empanadas + Side</h3>
                                 <span class="item-number">11</span>
                             </div>
-                            <p class="item-description">Chicken, beef, veggie (V), cheese, chicken-cheese(NEW), beef-cheese (NEW), and sauce + side. Add an empanada for $3.50.</p>
+                            <p class="item-description">Chicken, beef, veggie, cheese, chicken-cheese (NEW), beef-cheese (NEW), sauce + side</p>
                             <div class="item-tags">
-                                <span class="tag tag-new">NEW OPTIONS</span>
-                                <span class="tag tag-vegetarian">V</span>
+                                <span class="tag tag-new">NEW</span>
                             </div>
                         </div>
                         <div class="item-price">$14.90</div>
@@ -724,7 +870,7 @@
                                 <h3 class="item-name">ChoriPan Sandwich</h3>
                                 <span class="item-number">12</span>
                             </div>
-                            <p class="item-description">A typical Argentine sandwich made with chorizo or chicken, lettuce, chimichurri and french fries.</p>
+                            <p class="item-description">A typical Argentine sandwich made with chorizo or chicken, lettuce, chimichurri and french fries</p>
                         </div>
                         <div class="item-price">$15.90</div>
                     </div>
@@ -737,7 +883,7 @@
                                 <h3 class="item-name">Chicken Salad</h3>
                                 <span class="item-number">13</span>
                             </div>
-                            <p class="item-description">Grilled chicken and veggies, lettuce, tomatoes, and cheese.</p>
+                            <p class="item-description">Grilled chicken and veggies, lettuce, tomatoes, and cheese</p>
                         </div>
                         <div class="item-price">$13.90</div>
                     </div>
@@ -757,7 +903,7 @@
                                 <h3 class="item-name">Carne Asada (Steak)</h3>
                                 <span class="item-number">14</span>
                             </div>
-                            <p class="item-description">Argentine grilled steak flavored with our chimichurri sauce. Served with a side salad and your choice of sauce.</p>
+                            <p class="item-description">Argentine grilled steak flavored with our chimichurri sauce. Served with side salad</p>
                         </div>
                         <div class="item-price">$23.90</div>
                     </div>
@@ -770,7 +916,7 @@
                                 <h3 class="item-name">Carne Asada (Chicken)</h3>
                                 <span class="item-number">14.1</span>
                             </div>
-                            <p class="item-description">Argentine grilled chicken flavored with our chimichurri sauce. Served with a side salad and your choice of sauce.</p>
+                            <p class="item-description">Argentine grilled chicken flavored with our chimichurri sauce. Served with side salad</p>
                         </div>
                         <div class="item-price">$19.90</div>
                     </div>
@@ -783,7 +929,7 @@
                                 <h3 class="item-name">Lomito Sandwich</h3>
                                 <span class="item-number">15</span>
                             </div>
-                            <p class="item-description">Argentine sandwich with grilled steak or chicken, lettuce, tomatoes, ham, cheese, and an egg on bread. Served with french fries and your choice of sauce.</p>
+                            <p class="item-description">Argentine sandwich with grilled steak or chicken, lettuce, tomatoes, ham, cheese, and an egg. Served with french fries</p>
                         </div>
                         <div class="item-price">$19.90</div>
                     </div>
@@ -796,7 +942,7 @@
                                 <h3 class="item-name">Milanesa Grande</h3>
                                 <span class="item-number">16</span>
                             </div>
-                            <p class="item-description">Slice of beef or chicken which has been dipped into an egg wash, coated with bread crumbs and seasoned with salt, parsley, and garlic. Served with french fries and salsa golf.</p>
+                            <p class="item-description">Slice of beef or chicken dipped in egg wash, coated with bread crumbs, seasoned with salt, parsley, and garlic. Served with fries and salsa golf</p>
                         </div>
                         <div class="item-price">$19.90</div>
                     </div>
@@ -809,7 +955,7 @@
                                 <h3 class="item-name">Loaded Milanesa Grande</h3>
                                 <span class="item-number">17</span>
                             </div>
-                            <p class="item-description">Tender slice of beef or chicken, delicately dipped into an egg wash, then coated with breadcrumbs and seasoned with salt, parsley, and garlic. Accompanied by two fried eggs and served with French fries and our unique 'Salsa golf' sauce.</p>
+                            <p class="item-description">Tender slice of beef or chicken coated with breadcrumbs. Accompanied by two fried eggs and French fries with Salsa golf</p>
                         </div>
                         <div class="item-price">$20.90</div>
                     </div>
@@ -822,9 +968,9 @@
                                 <h3 class="item-name">Barroluco Sandwich</h3>
                                 <span class="item-number">18</span>
                             </div>
-                            <p class="item-description">Our signature dish! Sandwich made with beef, lettuce, tomatoes, ham, cheese, and sunny-side up egg, layered on thin bread. Served with french fries and salsa golf.</p>
+                            <p class="item-description">Our signature dish! Sandwich with beef, lettuce, tomatoes, ham, cheese, and sunny-side up egg. Served with fries and salsa golf</p>
                             <div class="item-tags">
-                                <span class="tag tag-special">⭐ SIGNATURE DISH</span>
+                                <span class="tag tag-special">SIGNATURE</span>
                             </div>
                         </div>
                         <div class="item-price">$20.90</div>
@@ -838,7 +984,7 @@
                                 <h3 class="item-name">Three Fish Tacos</h3>
                                 <span class="item-number">19</span>
                             </div>
-                            <p class="item-description">Cod fish, pico de gallo, onions, cilantro, and lettuce. Served with cilantro sauce (regular or spicy).</p>
+                            <p class="item-description">Cod fish, pico de gallo, onions, cilantro, and lettuce. Served with cilantro sauce</p>
                         </div>
                         <div class="item-price">$15.90</div>
                     </div>
@@ -851,7 +997,7 @@
                                 <h3 class="item-name">Three Tacos</h3>
                                 <span class="item-number">20</span>
                             </div>
-                            <p class="item-description">Choice of chicken, chorizo or paella. Served with onions, cilantro, and sauce cilantro (regular or spicy).</p>
+                            <p class="item-description">Choice of chicken, chorizo or paella. Served with onions, cilantro, and cilantro sauce</p>
                         </div>
                         <div class="item-price">$15.90</div>
                     </div>
@@ -864,7 +1010,7 @@
                                 <h3 class="item-name">Super Burger</h3>
                                 <span class="item-number">21</span>
                             </div>
-                            <p class="item-description">Our house-made beef or chicken patty, grilled to perfection and layered with fresh lettuce, tomato, ham, melted cheese, and a fried egg, all served on a soft bun. Accompanied by crispy French fries and your choice of sauce.</p>
+                            <p class="item-description">House-made beef or chicken patty with lettuce, tomato, ham, cheese, and fried egg. Served with French fries</p>
                         </div>
                         <div class="item-price">$16.90</div>
                     </div>
@@ -877,7 +1023,7 @@
                                 <h3 class="item-name">Pasta</h3>
                                 <span class="item-number">22</span>
                             </div>
-                            <p class="item-description">Spaghetti Pasta with a choice of creamy Alfredo or aromatic Pesto sauce, accompanied by a protein of your choice.</p>
+                            <p class="item-description">Spaghetti with choice of creamy Alfredo or aromatic Pesto sauce, with protein of your choice</p>
                         </div>
                         <div class="item-price">$13.90</div>
                     </div>
@@ -890,9 +1036,9 @@
                                 <h3 class="item-name">Sampler Platter</h3>
                                 <span class="item-number">23</span>
                             </div>
-                            <p class="item-description">Our sampler platter offers a taste of some of our best-selling dishes. It includes a pork rib, an empanada of your choice, and Paella with your preferred sauce. Additionally, a side of either French fries or plantains.</p>
+                            <p class="item-description">Taste of our best-selling dishes! Includes pork rib, empanada, and Paella with side of fries or plantains</p>
                             <div class="item-tags">
-                                <span class="tag tag-special">🔥 BEST SELLER</span>
+                                <span class="tag tag-special">BEST SELLER</span>
                             </div>
                         </div>
                         <div class="item-price">$22.50</div>
@@ -906,7 +1052,7 @@
                                 <h3 class="item-name">Fried Chicken</h3>
                                 <span class="item-number">24</span>
                             </div>
-                            <p class="item-description">Classic and delicious dish consisting of marinated and breaded chicken pieces, fried to achieve a crispy and golden texture. Crunchy exterior and juicy, tender interior, offering a perfect combination of flavors and textures.</p>
+                            <p class="item-description">Marinated and breaded chicken pieces, fried to crispy golden perfection. Crunchy exterior, juicy interior</p>
                         </div>
                         <div class="item-price">$19.90</div>
                     </div>
@@ -919,11 +1065,10 @@
                                 <h3 class="item-name">Arepa</h3>
                                 <span class="item-number">25</span>
                             </div>
-                            <p class="item-description">Stuffed Arepa (Chicken, Beef or Veggie) - Golden, crispy arepa stuffed with your choice of tender chicken, savory beef, or our flavorful veggie mix with paella rice, beans, cheese, and fajita-style veggies. Topped with fresh lettuce and melted cheese.</p>
+                            <p class="item-description">Stuffed Arepa - Choose your filling: Chicken or Beef (topped with fresh lettuce and melted cheese) OR Veggie (mix of paella rice, beans, cheese, and fajita-style veggies, topped with fresh lettuce and melted cheese). Add side $2 | Add plantain $3.50</p>
                             <div class="item-tags">
-                                <span class="tag tag-new">🔥 NEW</span>
+                                <span class="tag tag-new">NEW</span>
                             </div>
-                            <p class="item-description">Add a side for $2 extra | Add plantain for $3.50 extra</p>
                         </div>
                         <div class="item-price">$12.00</div>
                     </div>
@@ -939,7 +1084,7 @@
                     <div class="item-info">
                         <div class="item-left">
                             <h3 class="item-name">Paella 6.2</h3>
-                            <p class="item-description">Special portion size paella with your choice of ingredients.</p>
+                            <p class="item-description">Special portion size paella</p>
                         </div>
                         <div class="item-price">$6.20</div>
                     </div>
@@ -949,7 +1094,7 @@
                     <div class="item-info">
                         <div class="item-left">
                             <h3 class="item-name">BYO Burrito Loco</h3>
-                            <p class="item-description">Build your own burrito with your favorite fillings and toppings.</p>
+                            <p class="item-description">Build your own burrito with your favorite fillings</p>
                         </div>
                         <div class="item-price">$14.50</div>
                     </div>
@@ -959,7 +1104,7 @@
                     <div class="item-info">
                         <div class="item-left">
                             <h3 class="item-name">Quesadilla</h3>
-                            <p class="item-description">Grilled tortilla filled with melted cheese and your choice of protein.</p>
+                            <p class="item-description">Grilled tortilla filled with melted cheese and your choice of protein</p>
                         </div>
                         <div class="item-price">$12.50</div>
                     </div>
@@ -969,7 +1114,7 @@
                     <div class="item-info">
                         <div class="item-left">
                             <h3 class="item-name">Chips and Guac</h3>
-                            <p class="item-description">Crispy tortilla chips served with fresh homemade guacamole.</p>
+                            <p class="item-description">Crispy tortilla chips served with fresh homemade guacamole</p>
                         </div>
                         <div class="item-price">$6.80</div>
                     </div>
@@ -979,7 +1124,7 @@
                     <div class="item-info">
                         <div class="item-left">
                             <h3 class="item-name">Loaded Fries (Large)</h3>
-                            <p class="item-description">Generous portion of fries loaded with toppings and cheese.</p>
+                            <p class="item-description">Generous portion of fries loaded with toppings and cheese</p>
                         </div>
                         <div class="item-price">$12.90</div>
                     </div>
@@ -989,7 +1134,7 @@
                     <div class="item-info">
                         <div class="item-left">
                             <h3 class="item-name">Loaded Fries (Small)</h3>
-                            <p class="item-description">Small portion of fries loaded with toppings and cheese.</p>
+                            <p class="item-description">Small portion of fries loaded with toppings and cheese</p>
                         </div>
                         <div class="item-price">$10.90</div>
                     </div>
@@ -999,7 +1144,7 @@
                     <div class="item-info">
                         <div class="item-left">
                             <h3 class="item-name">Taco Individual</h3>
-                            <p class="item-description">Single taco with your choice of protein and toppings.</p>
+                            <p class="item-description">Single taco with your choice of protein and toppings</p>
                         </div>
                         <div class="item-price">$6.10</div>
                     </div>
@@ -1010,13 +1155,12 @@
             <div id="desserts" class="category-section">
                 <button class="home-button" onclick="goHome()">🏠 Home</button>
                 <h2 class="category-title">DESSERTS</h2>
-                <p class="category-subtitle">Sweets</p>
                 
                 <div class="menu-item">
                     <div class="item-info">
                         <div class="item-left">
                             <h3 class="item-name">Sweet Plantains</h3>
-                            <p class="item-description">Served with chocolate sauce and dulce de leche.</p>
+                            <p class="item-description">Served with chocolate sauce and dulce de leche</p>
                         </div>
                         <div class="item-price">$7.50</div>
                     </div>
@@ -1026,7 +1170,7 @@
                     <div class="item-info">
                         <div class="item-left">
                             <h3 class="item-name">Churros (6 pieces)</h3>
-                            <p class="item-description">6 churros - golden, sweet, and fried. Drizzled with your choice of chocolate sauce or dulce de leche.</p>
+                            <p class="item-description">6 golden, sweet churros drizzled with chocolate sauce or dulce de leche</p>
                         </div>
                         <div class="item-price">$6.90</div>
                     </div>
@@ -1036,7 +1180,7 @@
                     <div class="item-info">
                         <div class="item-left">
                             <h3 class="item-name">Churros Individual</h3>
-                            <p class="item-description">Single churro drizzled with your choice of chocolate sauce or dulce de leche.</p>
+                            <p class="item-description">Single churro drizzled with chocolate or dulce de leche</p>
                         </div>
                         <div class="item-price">$2.80</div>
                     </div>
@@ -1046,7 +1190,7 @@
                     <div class="item-info">
                         <div class="item-left">
                             <h3 class="item-name">Chocolate Alfajor</h3>
-                            <p class="item-description">Delicious chocolate alfajores. A soft and tender cookie with a creamy dulce de leche filling - an irresistibly popular treat in Latin culture.</p>
+                            <p class="item-description">Soft cookie with creamy dulce de leche filling - a Latin favorite</p>
                         </div>
                         <div class="item-price">$3.50</div>
                     </div>
@@ -1056,7 +1200,7 @@
                     <div class="item-info">
                         <div class="item-left">
                             <h3 class="item-name">Honey Alfajor</h3>
-                            <p class="item-description">Artisanal honey alfajores. A traditional recipe with moist and spiced cookies, filled with smooth dulce de leche. The perfect companion for a warm and sweet break.</p>
+                            <p class="item-description">Traditional recipe with moist spiced cookies filled with smooth dulce de leche</p>
                         </div>
                         <div class="item-price">$3.50</div>
                     </div>
@@ -1102,7 +1246,7 @@
                     <div class="item-info">
                         <div class="item-left">
                             <h3 class="item-name">Sprite Zero</h3>
-                            <p class="item-description">Zero sugar lemon-lime soda</p>
+                            <p class="item-description">Sugar-free lemon-lime soda</p>
                         </div>
                         <div class="item-price">$2.99</div>
                     </div>
@@ -1141,8 +1285,8 @@
                 <div class="menu-item">
                     <div class="item-info">
                         <div class="item-left">
-                            <h3 class="item-name">Jarritos - Mango</h3>
-                            <p class="item-description">Mexican mango soda</p>
+                            <h3 class="item-name">Jarritos (All Flavors)</h3>
+                            <p class="item-description">Mexican sodas in various flavors</p>
                         </div>
                         <div class="item-price">$2.99</div>
                     </div>
@@ -1151,48 +1295,7 @@
                 <div class="menu-item">
                     <div class="item-info">
                         <div class="item-left">
-                            <h3 class="item-name">Jarritos - Lime</h3>
-                            <p class="item-description">Mexican lime soda</p>
-                        </div>
-                        <div class="item-price">$2.99</div>
-                    </div>
-                </div>
 
-                <div class="menu-item">
-                    <div class="item-info">
-                        <div class="item-left">
-                            <h3 class="item-name">Jarritos - Mandarin</h3>
-                            <p class="item-description">Mexican mandarin soda</p>
-                        </div>
-                        <div class="item-price">$2.99</div>
-                    </div>
-                </div>
-
-                <div class="menu-item">
-                    <div class="item-info">
-                        <div class="item-left">
-                            <h3 class="item-name">Jarritos - Tamarindo</h3>
-                            <p class="item-description">Mexican tamarind soda</p>
-                        </div>
-                        <div class="item-price">$2.99</div>
-                    </div>
-                </div>
-
-                <div class="menu-item">
-                    <div class="item-info">
-                        <div class="item-left">
-                            <h3 class="item-name">Jarritos - Pineapple</h3>
-                            <p class="item-description">Mexican pineapple soda</p>
-                        </div>
-                        <div class="item-price">$2.99</div>
-                    </div>
-                </div>
-
-                <div class="menu-item">
-                    <div class="item-info">
-                        <div class="item-left">
-                            <h3 class="item-name">Jarritos - Strawberry</h3>
-                            <p class="item-description">Mexican strawberry soda</p>
                         </div>
                         <div class="item-price">$2.99</div>
                     </div>
@@ -1224,7 +1327,7 @@
                             <h3 class="item-name">Water</h3>
                             <p class="item-description">Bottled water</p>
                         </div>
-                        <div class="item-price">$2.99</div>
+                        <div class="item-price">$2.50</div>
                     </div>
                 </div>
 
@@ -1258,7 +1361,7 @@
                     <div class="item-info">
                         <div class="item-left">
                             <h3 class="item-name">Add Side Salad</h3>
-                            <p class="item-description">Fresh side salad to complement your meal</p>
+                            <p class="item-description">Fresh side salad</p>
                         </div>
                         <div class="item-price">$3.00</div>
                     </div>
@@ -1278,7 +1381,7 @@
                     <div class="item-info">
                         <div class="item-left">
                             <h3 class="item-name">Add Extra Protein</h3>
-                            <p class="item-description">Additional protein for your dish</p>
+                            <p class="item-description">Extra protein for your dish</p>
                         </div>
                         <div class="item-price">$5.00</div>
                     </div>
@@ -1287,7 +1390,7 @@
                 <div class="menu-item">
                     <div class="item-info">
                         <div class="item-left">
-                            <h3 class="item-name">Extra Sauce Pricing</h3>
+                            <h3 class="item-name">Extra Sauce Price</h3>
                             <p class="item-description">Additional sauces beyond what's included with your meal</p>
                         </div>
                         <div class="item-price">$0.50 each</div>
@@ -1298,12 +1401,12 @@
                     <h3>Available Sauces</h3>
                     <ul>
                         <li>Chimichurri (Regular) - Traditional Argentine herb sauce</li>
-                        <li>Chimichurri (Spicy) - Spicy version of our traditional herb sauce</li>
-                        <li>Chimi-Q - Special house sauce blend <span class="tag tag-new">NEW!</span></li>
+                        <li>Chimichurri (Spicy) - Spicy version of our traditional sauce</li>
+                        <li>Chimi-Q - Special house blend <span class="tag tag-new">NEW!</span></li>
                         <li>Cilantro (Regular) - Fresh cilantro sauce</li>
                         <li>Cilantro (Spicy) - Spicy cilantro sauce</li>
                         <li>Yum Yum - Creamy yum yum sauce</li>
-                        <li>Salsa Golf - Argentine ketchup and mayo blend</li>
+                        <li>Salsa Golf - Argentine mix of ketchup and mayo</li>
                     </ul>
                 </div>
             </div>
@@ -1313,8 +1416,8 @@
             <h3>BARROLUCO</h3>
             <div class="contact-info">
                 <div class="contact-item">📍 47 N. Pearl St., Columbus, OH 43215</div>
-                <div class="contact-item">📞 614-450-0777</div>
-                <div class="contact-item">🌐 www.barroluco.com</div>
+                <div class="contact-item">📞 <a href="tel:614-450-0777" style="color: var(--color-text-secondary); text-decoration: none;">614-450-0777</a></div>
+                <div class="contact-item">🛒 <a href="https://order.toasttab.com/online/barroluco-argentine-comfort-food-pearl-st-47-n-pearl-st" target="_blank" style="color: var(--argentina-red); font-weight: var(--font-weight-bold); text-decoration: underline;">Ordenar en línea: www.barroluco.com</a></div>
             </div>
             <p class="warning">*Consuming raw or undercooked meats, poultry, seafood, shellfish, or eggs may increase your risk of food-borne illness, especially if you have certain medical conditions.</p>
         </footer>

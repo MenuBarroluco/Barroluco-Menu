@@ -635,7 +635,7 @@
 </head>
 <body>
     <!-- Language Switcher -->
-    <a href="#" class="language-switcher">Español</a>
+    <a href="#" class="language-switcher" onclick="toggleLanguage(); return false;" id="langSwitch">Español</a>
     
     <div class="container">
         <header class="header">
@@ -1514,6 +1514,113 @@
         
         // Add touch event handling for better mobile experience
         document.addEventListener('touchstart', function() {}, true);
+        
+        // Language management
+        let currentLanguage = 'en';
+        
+        const translations = {
+            en: {
+                langButton: 'Español',
+                title: 'BARROLUCO',
+                subtitle: 'Argentine Comfort Food',
+                menuTitle: 'Digital Menu',
+                orderOnline: '🛒 ORDER ONLINE',
+                homeButton: '🏠 Home',
+                categories: {
+                    readyToGo: 'READY TO GO',
+                    quickEasy: 'QUICK & EASY',
+                    entrees: 'ENTREES',
+                    specials: 'SPECIALS',
+                    sides: 'SIDES',
+                    saucesExtras: 'SAUCES & EXTRAS',
+                    desserts: 'DESSERTS',
+                    beverages: 'BEVERAGES'
+                },
+                entreesSubtitle: 'Barroluco Main Plates',
+                sidesNote: 'Sides included with combo meals. Plantains have an additional charge of $2.50',
+                saucesNote: 'Extra sauce: $0.50 each',
+                specialsTitle: 'BARROLUCO SPECIALS',
+                footerWarning: '*Consuming raw or undercooked meats, poultry, seafood, shellfish, or eggs may increase your risk of foodborne illness, especially if you have certain medical conditions.'
+            },
+            es: {
+                langButton: 'English',
+                title: 'BARROLUCO',
+                subtitle: 'Comida Argentina Casera',
+                menuTitle: 'Menú Digital',
+                orderOnline: '🛒 ORDENAR EN LÍNEA',
+                homeButton: '🏠 Inicio',
+                categories: {
+                    readyToGo: 'PARA LLEVAR',
+                    quickEasy: 'RÁPIDO Y FÁCIL',
+                    entrees: 'PLATOS PRINCIPALES',
+                    specials: 'ESPECIALES',
+                    sides: 'ACOMPAÑAMIENTOS',
+                    saucesExtras: 'SALSAS Y EXTRAS',
+                    desserts: 'POSTRES',
+                    beverages: 'BEBIDAS'
+                },
+                entreesSubtitle: 'Platos Principales de Barroluco',
+                sidesNote: 'Acompañamientos incluidos con comidas combo. Los plátanos tienen un cargo adicional de $2.50',
+                saucesNote: 'Salsa extra: $0.50 cada una',
+                specialsTitle: 'ESPECIALES DE BARROLUCO',
+                footerWarning: '*El consumo de carnes, aves, mariscos, moluscos o huevos crudos o poco cocidos puede aumentar su riesgo de enfermedades transmitidas por alimentos, especialmente si tiene ciertas condiciones médicas.'
+            }
+        };
+        
+        function toggleLanguage() {
+            currentLanguage = currentLanguage === 'en' ? 'es' : 'en';
+            updateLanguage();
+        }
+        
+        function updateLanguage() {
+            const t = translations[currentLanguage];
+            
+            // Update language button
+            document.getElementById('langSwitch').textContent = t.langButton;
+            
+            // Update subtitle
+            document.querySelector('.logo-subtitle').textContent = t.subtitle;
+            document.querySelector('.subtitle').textContent = t.menuTitle;
+            
+            // Update order button
+            document.querySelector('.order-online-btn').innerHTML = t.orderOnline;
+            
+            // Update all home buttons
+            document.querySelectorAll('.home-button').forEach(btn => {
+                btn.textContent = t.homeButton;
+            });
+            
+            // Update navigation buttons
+            const navButtons = document.querySelectorAll('.nav-button');
+            navButtons[0].textContent = t.categories.readyToGo;
+            navButtons[1].textContent = t.categories.quickEasy;
+            navButtons[2].textContent = t.categories.entrees;
+            navButtons[3].textContent = t.categories.specials;
+            navButtons[4].textContent = t.categories.sides;
+            navButtons[5].textContent = t.categories.saucesExtras;
+            navButtons[6].textContent = t.categories.desserts;
+            navButtons[7].textContent = t.categories.beverages;
+            
+            // Update category titles
+            const categoryTitles = document.querySelectorAll('.category-title');
+            categoryTitles[0].textContent = t.categories.readyToGo;
+            categoryTitles[1].textContent = t.categories.quickEasy;
+            categoryTitles[2].textContent = t.categories.entrees;
+            categoryTitles[3].textContent = t.specialsTitle;
+            categoryTitles[4].textContent = t.categories.desserts;
+            categoryTitles[5].textContent = t.categories.beverages;
+            categoryTitles[6].textContent = t.categories.sides;
+            categoryTitles[7].textContent = t.categories.saucesExtras;
+            
+            // Update category subtitles
+            const subtitles = document.querySelectorAll('.category-subtitle');
+            if (subtitles[0]) subtitles[0].textContent = t.entreesSubtitle;
+            if (subtitles[1]) subtitles[1].textContent = t.sidesNote;
+            if (subtitles[2]) subtitles[2].textContent = t.saucesNote;
+            
+            // Update footer warning
+            document.querySelector('.warning').textContent = t.footerWarning;
+        }
     </script>
 </body>
 </html>
